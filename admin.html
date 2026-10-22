@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة تحكم الموارد البشرية | شركة أصول</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { cairo: ['Cairo', 'sans-serif'] },
+                    colors: { osoul: { dark: '#0f172a', primary: '#1e3a8a', accent: '#059669' } }
+                }
+            }
+        }
+    </script>
+    <style> body { font-family: 'Cairo', sans-serif; } </style>
+</head>
+<body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- شاشة تسجيل الدخول -->
+    <div id="loginScreen" class="fixed inset-0 bg-gradient-to-bl from-osoul-dark via-osoul-primary to-slate-900 flex items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl">
+            <div class="text-center mb-6">
+                <img src="logo.jpg" alt="شعار شركة أصول" class="h-20 w-auto object-contain mx-auto mb-3" onerror="this.onerror=null; this.src='logo.png';">
+                <h2 class="text-2xl font-extrabold text-osoul-dark">بوابة الإدارة - شركة أصول</h2>
+                <p class="text-slate-500 text-sm mt-1">يرجى تسجيل الدخول للوصول لطلبات التوظيف</p>
+            </div>
+            <form id="loginForm" class="space-y-4">
+                <div><label class="block text-sm font-bold text-slate-700 mb-1">اسم المستخدم</label><input type="text" id="usernameInput" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 outline-none"></div>
+                <div><label class="block text-sm font-bold text-slate-700 mb-1">كلمة المرور</label><input type="password" id="passwordInput" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 outline-none"></div>
+                <p id="loginError" class="text-rose-600 text-xs font-bold hidden text-center bg-rose-50 py-2 rounded-lg">اسم المستخدم أو كلمة المرور غير صحيحة!</p>
+                <button type="submit" class="w-full bg-osoul-primary hover:bg-blue-900 text-white font-bold py-3 rounded-xl shadow transition">تسجيل الدخول</button>
+            </form>
+            <div class="mt-6 text-center"><a href="index.html" class="text-xs text-slate-500 hover:underline"><i class="fa-solid fa-arrow-right ml-1"></i> العودة لموقع التقديم</a></div>
+        </div>
+    </div>
+
+    <!-- لوحة التحكم -->
+    <div id="dashboardContent" class="hidden flex-col min-h-screen">
+        <header class="bg-osoul-dark text-white shadow-md sticky top-0 z-30">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <img src="logo.jpg" alt="شعار شركة أصول" class="h-14 w-auto object-contain bg-white p-1 rounded-lg" onerror="this.onerror=null; this.src='logo.png';">
+                    <div class="flex flex-col">
+                        <span class="text-white font-extrabold text-base sm:text-lg">شركة أصول - لوحة الموارد البشرية</span>
+                        <span class="text-[11px] text-emerald-400 font-bold tracking-wider">OSOOL HR DASHBOARD</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button onclick="fetchApplicantsData()" class="bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm px-3.5 py-2 rounded-lg font-bold shadow transition"><i class="fa-solid fa-rotate ml-1"></i> تحديث</button>
+                    <button onclick="exportToCSV()" class="bg-osoul-accent hover:bg-emerald-600 text-white text-xs sm:text-sm px-4 py-2 rounded-lg font-bold shadow transition"><i class="fa-solid fa-file-excel ml-1"></i> تصدير Excel</button>
+                    <button onclick="logout()" class="bg-rose-600/20 hover:bg-rose-600 text-rose-200 hover:text-white text-xs sm:text-sm px-3.5 py-2 rounded-lg font-bold transition"><i class="fa-solid fa-right-from-bracket ml-1"></i> خروج</button>
+                </div>
+            </div>
+        </header>
+
+        <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow">
+            <!-- الإحصائيات -->
+            <div class="grid grid-cols-1 sm:grid-cols-4 gap-5 mb-8">
+                <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200"><p class="text-slate-500 text-sm">إجمالي المتقدمين</p><h3 id="stat-total" class="text-3xl font-extrabold text-osoul-dark">0</h3></div>
+                <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200"><p class="text-slate-500 text-sm">قيد المراجعة</p><h3 id="stat-pending" class="text-3xl font-extrabold text-amber-600">0</h3></div>
+                <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200"><p class="text-slate-500 text-sm">مؤهل للمقابلة</p><h3 id="stat-accepted" class="text-3xl font-extrabold text-emerald-600">0</h3></div>
+                <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200"><p class="text-slate-500 text-sm">مستبعد</p><h3 id="stat-rejected" class="text-3xl font-extrabold text-rose-600">0</h3></div>
+            </div>
+
+            <!-- جدول الطلبات -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-right border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 border-b border-slate-200 text-slate-600 text-xs font-bold uppercase">
+                                <th class="py-4 px-4">المتقدم</th>
+                                <th class="py-4 px-4">التخصص والقسم</th>
+                                <th class="py-4 px-4">السيرة الذاتية (CV)</th>
+                                <th class="py-4 px-4">التاريخ</th>
+                                <th class="py-4 px-4">الحالة</th>
+                                <th class="py-4 px-4 text-center">الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="applicantsTableBody" class="divide-y divide-slate-200 text-sm"></tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- نافذة التفاصيل -->
+    <div id="detailsModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-start border-b border-slate-200 pb-4 mb-6">
+                <div>
+                    <span id="modal-status-badge" class="text-xs font-bold px-2.5 py-1 rounded-full mb-2 inline-block"></span>
+                    <h3 id="modal-name" class="text-2xl font-extrabold text-osoul-dark"></h3>
+                    <p id="modal-dept" class="text-sm text-osoul-primary font-semibold"></p>
+                </div>
+                <button onclick="closeDetailsModal()" class="text-slate-400 hover:text-slate-700 text-2xl"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4 text-sm">
+                <div class="bg-slate-50 p-3.5 rounded-xl border"><span class="text-slate-400 text-xs block">المؤهل والجامعة</span><strong id="modal-education"></strong></div>
+                <div class="bg-slate-50 p-3.5 rounded-xl border"><span class="text-slate-400 text-xs block">التواصل والمدينة</span><strong id="modal-contact"></strong></div>
+                <div class="bg-slate-50 p-3.5 rounded-xl border"><span class="text-slate-400 text-xs block">الخبرة والدوام</span><strong id="modal-experience"></strong></div>
+                <div class="bg-slate-50 p-3.5 rounded-xl border"><span class="text-slate-400 text-xs block">البرامج المتقنة</span><strong id="modal-software" class="text-osoul-primary"></strong></div>
+            </div>
+
+            <!-- قسم عرض وتحميل السيرة الذاتية -->
+            <div id="modal-cv-container" class="bg-blue-50/60 p-4 rounded-xl border border-blue-200 mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                <div>
+                    <span class="text-slate-500 text-xs block mb-1">السيرة الذاتية المرفقة (CV)</span>
+                    <span id="modal-cv-text" class="font-bold text-osoul-dark text-sm"></span>
+                </div>
+                <div id="modal-cv-download-btn"></div>
+            </div>
+
+            <div class="mb-6"><h4 class="text-xs font-bold text-slate-400 uppercase mb-2">النبذة والخبرات:</h4><p id="modal-bio" class="bg-slate-50 p-4 rounded-xl border text-sm text-slate-700 leading-relaxed"></p></div>
+
+            <div class="flex flex-wrap justify-between items-center gap-3 border-t pt-5">
+                <div class="flex gap-2">
+                    <button id="btn-accept" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-xl text-sm font-bold transition"><i class="fa-solid fa-check ml-1"></i> قبول للمقابلة</button>
+                    <button id="btn-reject" class="bg-rose-600 hover:bg-rose-700 text-white px-4 py-2 rounded-xl text-sm font-bold transition"><i class="fa-solid fa-xmark ml-1"></i> استبعاد</button>
+                </div>
+                <a id="btn-whatsapp" href="#" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 transition"><i class="fa-brands fa-whatsapp text-lg"></i> مراسلة واتساب</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const ADMIN_USER = "admin";
+        const ADMIN_PASS = "osool2026";
+        const FIREBASE_URL = "https://osoul-42514-default-rtdb.firebaseio.com";
+        let applicants = [];
+
+        function checkAuth() {
+            if (sessionStorage.getItem('osoul_admin_logged') === 'true') {
+                document.getElementById('loginScreen').classList.add('hidden');
+                const dash = document.getElementById('dashboardContent');
+                dash.classList.remove('hidden');
+                dash.classList.add('flex');
+                fetchApplicantsData();
+            }
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (document.getElementById('usernameInput').value === ADMIN_USER && document.getElementById('passwordInput').value === ADMIN_PASS) {
+                sessionStorage.setItem('osoul_admin_logged', 'true');
+                checkAuth();
+            } else {
+                document.getElementById('loginError').classList.remove('hidden');
+            }
+        });
+
+        function logout() {
+            sessionStorage.removeItem('osoul_admin_logged');
+            location.reload();
+        }
+
+        // جلب البيانات من Firebase مع دعم محلي احتياطي
+        async function fetchApplicantsData() {
+            const tbody = document.getElementById('applicantsTableBody');
+            tbody.innerHTML = `<tr><td colspan="6" class="py-8 text-center text-slate-500"><i class="fa-solid fa-spinner fa-spin ml-2"></i> جاري تحديث الطلبات...</td></tr>`;
+
+            if (FIREBASE_URL && FIREBASE_URL.startsWith("http")) {
+                const cleanUrl = FIREBASE_URL.replace(/\/$/, "");
+                try {
+                    const res = await fetch(`${cleanUrl}/applicants.json`);
+                    if (res.ok) {
+                        const data = await res.json();
+                        if (data) {
+                            applicants = Object.values(data).sort((a, b) => b.id - a.id);
+                            renderTable();
+                            return;
+                        }
+                    }
+                } catch (e) {
+                    console.error("الاتصال السحابي تعذر، جاري استخدام الذاكرة المحلية");
+                }
+            }
+
+            try {
+                applicants = JSON.parse(localStorage.getItem('osoul_applicants')) || [];
+            } catch (e) {
+                applicants = [];
+            }
+            renderTable();
+        }
+
+        function renderTable() {
+            document.getElementById('stat-total').innerText = applicants.length;
+            document.getElementById('stat-pending').innerText = applicants.filter(a => a.status === 'pending').length;
+            document.getElementById('stat-accepted').innerText = applicants.filter(a => a.status === 'accepted').length;
+            document.getElementById('stat-rejected').innerText = applicants.filter(a => a.status === 'rejected').length;
+
+            const tbody = document.getElementById('applicantsTableBody');
+            tbody.innerHTML = '';
+
+            if (applicants.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" class="py-12 text-center text-slate-400 font-semibold">لا توجد طلبات توظيف مسجلة حتى الآن.</td></tr>`;
+                return;
+            }
+
+            applicants.forEach(app => {
+                const fileName = app.cvFileName || app.cvFile || "بدون مرفق";
+                let badge = app.status === 'accepted' 
+                    ? '<span class="bg-emerald-100 text-emerald-700 text-xs px-2.5 py-1 rounded-full font-bold">مؤهل</span>' 
+                    : (app.status === 'rejected' ? '<span class="bg-rose-100 text-rose-700 text-xs px-2.5 py-1 rounded-full font-bold">مستبعد</span>' : '<span class="bg-amber-100 text-amber-700 text-xs px-2.5 py-1 rounded-full font-bold">جديد</span>');
+                
+                let cvBadge = `<span class="text-slate-400 text-xs">بدون مرفق</span>`;
+                if (fileName !== "بدون مرفق") {
+                    if (app.cvData) {
+                        cvBadge = `<a href="${app.cvData}" download="${fileName}" class="inline-flex items-center gap-1.5 text-white bg-osoul-primary hover:bg-blue-900 font-bold text-xs px-3 py-1.5 rounded-lg shadow-sm transition" title="اضغط لتنزيل الملف"><i class="fa-solid fa-download"></i> تنزيل (${fileName.slice(0, 10)}...)</a>`;
+                    } else {
+                        cvBadge = `<span class="text-osoul-primary font-bold text-xs bg-blue-50 px-2.5 py-1 rounded-lg border border-blue-200"><i class="fa-solid fa-file-pdf text-rose-600 ml-1"></i>${fileName}</span>`;
+                    }
+                }
+
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td class="py-4 px-4 font-bold">${app.name}<br><span class="text-xs text-slate-400" dir="ltr">${app.phone}</span></td>
+                    <td class="py-4 px-4 text-xs"><strong>${app.department}</strong><br>${app.degree}</td>
+                    <td class="py-4 px-4">${cvBadge}</td>
+                    <td class="py-4 px-4 text-xs text-slate-500">${app.date}</td>
+                    <td class="py-4 px-4">${badge}</td>
+                    <td class="py-4 px-4 text-center">
+                        <button onclick="openDetailsModal(${app.id})" class="bg-blue-50 hover:bg-osoul-primary hover:text-white text-osoul-primary px-3 py-1.5 rounded-lg text-xs font-bold transition"><i class="fa-solid fa-eye ml-1"></i> عرض</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function openDetailsModal(id) {
+            const app = applicants.find(a => a.id === id);
+            if (!app) return;
+
+            const fileName = app.cvFileName || app.cvFile || "بدون مرفق";
+
+            document.getElementById('modal-status-badge').outerHTML = `<span id="modal-status-badge" class="text-xs font-bold px-2.5 py-1 rounded-full mb-2 inline-block ${app.status === 'accepted' ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'}">${app.status === 'accepted' ? 'مؤهل للمقابلة' : 'قيد المراجعة'}</span>`;
+            document.getElementById('modal-name').innerText = app.name;
+            document.getElementById('modal-dept').innerText = `القسم والاختصاص: ${app.department}`;
+            document.getElementById('modal-education').innerText = `${app.degree} - ${app.major} (${app.university || ''})`;
+            document.getElementById('modal-contact').innerText = `${app.phone} | ${app.city} (مواليد ${app.birthYear || '-'})`;
+            document.getElementById('modal-experience').innerText = `${app.experience || '-'} | ${app.workType || '-'}`;
+            document.getElementById('modal-software').innerText = Array.isArray(app.software) ? app.software.join(' ، ') : 'غير محدد';
+            document.getElementById('modal-bio').innerText = app.bio;
+
+            document.getElementById('modal-cv-text').innerHTML = fileName !== "بدون مرفق"
+                ? `<i class="fa-solid fa-file-pdf text-rose-600 ml-1"></i> ${fileName}`
+                : `<span class="text-slate-400 font-normal">لم يتم إرفاق ملف سيرة ذاتية</span>`;
+
+            const downloadBtnContainer = document.getElementById('modal-cv-download-btn');
+            if (app.cvData && fileName !== "بدون مرفق") {
+                downloadBtnContainer.innerHTML = `<a href="${app.cvData}" download="${fileName}" class="bg-osoul-primary hover:bg-blue-900 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow transition flex items-center gap-2"><i class="fa-solid fa-download"></i> تنزيل السيرة الذاتية</a>`;
+            } else if (fileName !== "بدون مرفق") {
+                downloadBtnContainer.innerHTML = `<span class="text-xs text-amber-600 bg-amber-50 px-3 py-1.5 rounded-lg border border-amber-200">طلب قديم</span>`;
+            } else {
+                downloadBtnContainer.innerHTML = '';
+            }
+
+            document.getElementById('btn-accept').onclick = () => { changeStatus(app.id, 'accepted'); closeDetailsModal(); };
+            document.getElementById('btn-reject').onclick = () => { changeStatus(app.id, 'rejected'); closeDetailsModal(); };
+            document.getElementById('btn-whatsapp').href = `https://wa.me/${app.phone.replace(/^0/, '963')}?text=مرحباً ${app.name}، نتواصل معك من قسم الموارد البشرية في شركة أصول بخصوص طلب التوظيف.`;
+
+            document.getElementById('detailsModal').classList.remove('hidden');
+            document.getElementById('detailsModal').classList.add('flex');
+        }
+
+        function closeDetailsModal() {
+            document.getElementById('detailsModal').classList.add('hidden');
+            document.getElementById('detailsModal').classList.remove('flex');
+        }
+
+        async function changeStatus(id, status) {
+            applicants = applicants.map(a => a.id === id ? {...a, status: status} : a);
+            const updatedApp = applicants.find(a => a.id === id);
+
+            if (FIREBASE_URL && FIREBASE_URL.startsWith("http") && updatedApp) {
+                const cleanUrl = FIREBASE_URL.replace(/\/$/, "");
+                try {
+                    await fetch(`${cleanUrl}/applicants/${id}.json`, {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(updatedApp)
+                    });
+                } catch(e) {}
+            }
+            try { localStorage.setItem('osoul_applicants', JSON.stringify(applicants)); } catch(e) {}
+            renderTable();
+        }
+
+        function exportToCSV() {
+            let csv = "\uFEFFالاسم,الهاتف,المدينة,المستوى,التخصص,القسم والاختصاص,السيرة الذاتية,التاريخ,الحالة\n";
+            applicants.forEach(a => {
+                const fileName = a.cvFileName || a.cvFile || 'بدون';
+                csv += `"${a.name}","${a.phone}","${a.city}","${a.degree}","${a.major}","${a.department}","${fileName}","${a.date}","${a.status}"\n`;
+            });
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "osoul_applicants.csv";
+            link.click();
+        }
+
+        checkAuth();
+    </script>
+</body>
+</html>

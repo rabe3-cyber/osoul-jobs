@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شركة أصول للمحاسبة والمستودعات | بوابة التوظيف</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { cairo: ['Cairo', 'sans-serif'] },
+                    colors: {
+                        osoul: { dark: '#0f172a', primary: '#1e3a8a', accent: '#059669', light: '#f8fafc' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Cairo', sans-serif; scroll-behavior: smooth; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #1e3a8a; border-radius: 4px; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- شريط التنقل -->
+    <header class="bg-white shadow-sm sticky top-0 z-40">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24">
+                <div class="flex items-center gap-3">
+                    <a href="#home" class="flex items-center gap-3">
+                        <img src="logo.jpg" alt="شعار شركة أصول" class="h-16 md:h-20 w-auto object-contain" onerror="this.onerror=null; this.src='logo.png';">
+                        <div class="flex flex-col">
+                            <span class="text-xl md:text-2xl font-extrabold text-osoul-dark tracking-wide">شركة أصول</span>
+                            <span class="text-xs font-bold text-osoul-accent tracking-wider">OSOOL BUSINESS SOLUTIONS</span>
+                        </div>
+                    </a>
+                </div>
+
+                <nav class="hidden md:flex space-x-8 space-x-reverse font-semibold text-slate-600">
+                    <a href="#home" class="hover:text-osoul-primary transition">الرئيسية</a>
+                    <a href="#about" class="hover:text-osoul-primary transition">عن الشركة</a>
+                    <a href="#departments" class="hover:text-osoul-primary transition">الاختصاصات المطلوبة</a>
+                    <a href="#apply-form" class="hover:text-osoul-primary transition">نموذج التقديم</a>
+                </nav>
+
+                <div>
+                    <a href="#apply-form" class="bg-osoul-accent hover:bg-emerald-700 text-white px-5 py-2.5 rounded-lg font-bold text-sm shadow transition flex items-center gap-2">
+                        <span>قدّم طلبك الآن</span>
+                        <i class="fa-solid fa-paper-plane text-xs"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- القسم الترحيبي -->
+    <section id="home" class="relative bg-gradient-to-bl from-osoul-dark via-osoul-primary to-slate-900 text-white py-20 lg:py-28 overflow-hidden">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-3xl mx-auto text-center">
+                <span class="inline-block py-1 px-3 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-sm font-semibold mb-4">
+                    <i class="fa-solid fa-briefcase ml-1"></i> بوابة التوظيف الرسمية واستقطاب الكفاءات
+                </span>
+                <h1 class="text-3xl sm:text-5xl font-extrabold mb-6 leading-[1.8] sm:leading-[1.8]">
+                    ابنِ مستقبلك المهني مع <span class="text-emerald-400">شركة أصول</span> للمحاسبة والمستودعات
+                </h1>
+                <p class="text-lg text-slate-300 mb-8 leading-relaxed">
+                    نحن نبحث دائماً عن الكفاءات المتميزة والخريجين الطموحين من مختلف الدراسات والاختصاصات المالية، الإدارية، اللوجستية، والتقنية للانضمام إلى فريق عملنا.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#apply-form" class="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-3.5 rounded-xl font-bold text-lg shadow-lg transition">تعبئة استمارة التوظيف</a>
+                    <a href="#departments" class="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-8 py-3.5 rounded-xl font-bold text-lg backdrop-blur-sm transition">تصفح الاختصاصات</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- مميزات العمل -->
+    <section id="about" class="py-12 bg-white border-b border-slate-200">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100">
+                    <div class="w-14 h-14 bg-blue-100 text-osoul-primary rounded-full flex items-center justify-center text-2xl mx-auto mb-4"><i class="fa-solid fa-chart-line"></i></div>
+                    <h3 class="text-lg font-bold mb-2">تطور وظيفي مستمر</h3>
+                    <p class="text-slate-600 text-sm">بيئة عمل احترافية تساعدك على صقل مهاراتك المحاسبية والإدارية والتدرج الوظيفي.</p>
+                </div>
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100">
+                    <div class="w-14 h-14 bg-emerald-100 text-osoul-accent rounded-full flex items-center justify-center text-2xl mx-auto mb-4"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <h3 class="text-lg font-bold mb-2">نستقبل مختلف المؤهلات</h3>
+                    <p class="text-slate-600 text-sm">سواء كنت خريجاً جامعياً، خريج معهد، أو صاحب خبرة عملية ميدانية.</p>
+                </div>
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100">
+                    <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-2xl mx-auto mb-4"><i class="fa-solid fa-laptop-code"></i></div>
+                    <h3 class="text-lg font-bold mb-2">أحدث الأنظمة التقنية</h3>
+                    <p class="text-slate-600 text-sm">نعتمد على أحدث البرامج المحاسبية وأنظمة الجرد الذكي لإدارة المستودعات.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الاختصاصات مع القوائم المنسدلة -->
+    <section id="departments" class="py-16 bg-slate-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-osoul-dark mb-3">الأقسام والاختصاصات المفتوحة للتقديم</h2>
+                <p class="text-slate-600">اختر الاختصاص الفرعي المناسب لك من القائمة المنسدلة داخل كل قسم ليتم توجيهك للاستمارة.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- المحاسبة -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-blue-50 text-blue-700 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-calculator"></i></div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">المحاسبة والمالية</h3>
+                        <p class="text-slate-600 text-xs mb-3">اختر المسمى الوظيفي:</p>
+                        <div class="mb-4">
+                            <select id="cardSub_accounting" class="w-full px-3 py-2 rounded-xl border border-slate-300 bg-slate-50 text-sm font-semibold text-slate-700 outline-none">
+                                <option value="مدخل بيانات">مدخل بيانات</option>
+                                <option value="محاسب">محاسب</option>
+                                <option value="مدير حسابات">مدير حسابات</option>
+                                <option value="مدير مالي">مدير مالي</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button onclick="selectDepartmentFromCard('المحاسبة والإدارة المالية', 'cardSub_accounting')" class="w-full py-2.5 px-4 bg-slate-100 hover:bg-osoul-primary hover:text-white text-osoul-primary font-bold rounded-xl transition text-sm">قدّم على هذا الاختصاص</button>
+                </div>
+
+                <!-- التقني -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-purple-50 text-purple-700 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-headset"></i></div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">التقني وتكنولوجيا المعلومات</h3>
+                        <p class="text-slate-600 text-xs mb-3">اختر الاختصاص التقني:</p>
+                        <div class="mb-4">
+                            <select id="cardSub_it" class="w-full px-3 py-2 rounded-xl border border-slate-300 bg-slate-50 text-sm font-semibold text-slate-700 outline-none">
+                                <option value="شبكات">شبكات</option>
+                                <option value="إدارة قواعد بيانات">إدارة قواعد بيانات</option>
+                                <option value="نظم التشغيل">نظم التشغيل</option>
+                                <option value="ذكاء اصطناعي">ذكاء اصطناعي</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button onclick="selectDepartmentFromCard('الدعم التقني وتكنولوجيا المعلومات', 'cardSub_it')" class="w-full py-2.5 px-4 bg-slate-100 hover:bg-osoul-primary hover:text-white text-osoul-primary font-bold rounded-xl transition text-sm">قدّم على هذا الاختصاص</button>
+                </div>
+
+                <!-- المستودعات -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-emerald-50 text-emerald-700 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-boxes-stacked"></i></div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">إدارة المستودعات والجرد</h3>
+                        <p class="text-slate-600 text-xs mb-3">اختر الاختصاص المستودعي:</p>
+                        <div class="mb-4">
+                            <select id="cardSub_warehouse" class="w-full px-3 py-2 rounded-xl border border-slate-300 bg-slate-50 text-sm font-semibold text-slate-700 outline-none">
+                                <option value="أمين مستودع">أمين مستودع</option>
+                                <option value="مشرف حركة مخزون">مشرف حركة مخزون</option>
+                                <option value="لجنة جرد ومطابقة">لجنة جرد ومطابقة</option>
+                                <option value="مدخل فواتير مستودعية">مدخل فواتير مستودعية</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button onclick="selectDepartmentFromCard('إدارة المستودعات والمخزون', 'cardSub_warehouse')" class="w-full py-2.5 px-4 bg-slate-100 hover:bg-osoul-primary hover:text-white text-osoul-primary font-bold rounded-xl transition text-sm">قدّم على هذا الاختصاص</button>
+                </div>
+
+                <!-- الإدارة -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-amber-50 text-amber-700 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-users-gear"></i></div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">الإدارة والمبيعات والـ HR</h3>
+                        <p class="text-slate-600 text-xs mb-3">اختر الاختصاص الإداري:</p>
+                        <div class="mb-4">
+                            <select id="cardSub_admin" class="w-full px-3 py-2 rounded-xl border border-slate-300 bg-slate-50 text-sm font-semibold text-slate-700 outline-none">
+                                <option value="موارد بشرية (HR)">موارد بشرية (HR)</option>
+                                <option value="سكرتارية تنفيذية">سكرتارية تنفيذية</option>
+                                <option value="تسويق ومبيعات الأنظمة">تسويق ومبيعات الأنظمة</option>
+                                <option value="علاقات عامة">علاقات عامة</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button onclick="selectDepartmentFromCard('الإدارة والمبيعات والموارد البشرية', 'cardSub_admin')" class="w-full py-2.5 px-4 bg-slate-100 hover:bg-osoul-primary hover:text-white text-osoul-primary font-bold rounded-xl transition text-sm">قدّم على هذا الاختصاص</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- استمارة التوظيف -->
+    <section id="apply-form" class="py-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+            <div class="bg-slate-50 rounded-3xl p-6 sm:p-10 shadow-lg border border-slate-200">
+                <div class="border-b border-slate-200 pb-6 mb-8 text-center sm:text-right flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <div>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-osoul-dark">استمارة طلب التوظيف</h2>
+                        <p class="text-slate-600 text-sm mt-1">يرجى تعبئة البيانات بدقة، سيقوم قسم الموارد البشرية بمراجعة طلبك.</p>
+                    </div>
+                    <span class="bg-blue-100 text-osoul-primary text-xs font-bold px-3 py-1.5 rounded-lg">جميع الحقول المعلمة بـ (*) مطلوبة</span>
+                </div>
+
+                <form id="jobApplicationForm" class="space-y-8">
+                    <div>
+                        <h3 class="text-lg font-bold text-osoul-primary mb-4 flex items-center gap-2">
+                            <span class="w-7 h-7 rounded-full bg-osoul-primary text-white text-sm flex items-center justify-center">1</span> المعلومات الشخصية
+                        </h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div><label class="block text-sm font-semibold mb-1.5">الاسم الكامل (الثلاثي) *</label><input type="text" id="appName" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 outline-none bg-white"></div>
+                            <div><label class="block text-sm font-semibold mb-1.5">رقم الهاتف (واتساب) *</label><input type="tel" id="appPhone" required dir="ltr" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 outline-none bg-white text-right"></div>
+                            <div><label class="block text-sm font-semibold mb-1.5">البريد الإلكتروني</label><input type="email" id="appEmail" dir="ltr" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 outline-none bg-white text-right"></div>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div><label class="block text-sm font-semibold mb-1.5">المدينة *</label><input type="text" id="appCity" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 outline-none bg-white"></div>
+                                <div><label class="block text-sm font-semibold mb-1.5">سنة الميلاد *</label><input type="number" id="appBirthYear" required min="1965" max="2008" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 outline-none bg-white"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="border-slate-200">
+
+                    <div>
+                        <h3 class="text-lg font-bold text-osoul-primary mb-4 flex items-center gap-2">
+                            <span class="w-7 h-7 rounded-full bg-osoul-primary text-white text-sm flex items-center justify-center">2</span> المؤهل العلمي والاختصاص
+                        </h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                            <div>
+                                <label class="block text-sm font-semibold mb-1.5">المستوى الدراسي *</label>
+                                <select id="appDegree" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 outline-none bg-white">
+                                    <option value="" disabled selected>اختر...</option>
+                                    <option value="إجازة جامعية (بكالوريوس)">إجازة جامعية (بكالوريوس)</option>
+                                    <option value="ماجستير / دراسات عليا">ماجستير / دراسات عليا</option>
+                                    <option value="معهد متوسط (دبلوم تقاني)">معهد متوسط (دبلوم تقاني)</option>
+                                    <option value="طالب جامعي حالياً">طالب جامعي حالياً</option>
+                                    <option value="شهادة ثانوية (بكالوريا)">شهادة ثانوية (بكالوريا)</option>
+                                </select>
+                            </div>
+                            <div><label class="block text-sm font-semibold mb-1.5">الاختصاص الدراسي الدقيق *</label><input type="text" id="appMajor" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 outline-none bg-white"></div>
+                            <div><label class="block text-sm font-semibold mb-1.5">الجامعة وسنة التخرج</label><input type="text" id="appUniversity" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 outline-none bg-white"></div>
+                        </div>
+                    </div>
+
+                    <hr class="border-slate-200">
+
+                    <div>
+                        <h3 class="text-lg font-bold text-osoul-primary mb-4 flex items-center gap-2">
+                            <span class="w-7 h-7 rounded-full bg-osoul-primary text-white text-sm flex items-center justify-center">3</span> القسم والخبرات
+                        </h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+                            <div>
+                                <label class="block text-sm font-semibold mb-1.5">القسم الرئيسي *</label>
+                                <select id="departmentSelect" required onchange="updateSubSpecialties()" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 outline-none bg-white font-semibold">
+                                    <option value="" disabled selected>اختر القسم الوظيفي...</option>
+                                    <option value="المحاسبة والإدارة المالية">المحاسبة والإدارة المالية</option>
+                                    <option value="الدعم التقني وتكنولوجيا المعلومات">الدعم التقني وتكنولوجيا المعلومات</option>
+                                    <option value="إدارة المستودعات والمخزون">إدارة المستودعات والمخزون</option>
+                                    <option value="الإدارة والمبيعات والموارد البشرية">الإدارة والمبيعات والموارد البشرية</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold mb-1.5">الاختصاص الدقيق *</label>
+                                <select id="subSpecialtySelect" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 outline-none bg-white font-semibold text-osoul-primary">
+                                    <option value="" disabled selected>اختر القسم الرئيسي أولاً...</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+                            <div>
+                                <label class="block text-sm font-semibold mb-1.5">عدد سنوات الخبرة *</label>
+                                <select id="appExperience" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 outline-none bg-white">
+                                    <option value="خريج جديد (بدون خبرة)">خريج جديد</option>
+                                    <option value="أقل من سنة">أقل من سنة</option>
+                                    <option value="من 1 إلى 3 سنوات">من 1 إلى 3 سنوات</option>
+                                    <option value="من 3 إلى 5 سنوات">من 3 إلى 5 سنوات</option>
+                                    <option value="أكثر من 5 سنوات">أكثر من 5 سنوات</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold mb-1.5">طبيعة الدوام *</label>
+                                <select id="appWorkType" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 outline-none bg-white">
+                                    <option value="دوام كامل">دوام كامل</option>
+                                    <option value="دوام جزئي">دوام جزئي</option>
+                                    <option value="عمل مرن / عن بعد">عمل مرن / عن بعد</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="mb-5">
+                            <label class="block text-sm font-semibold mb-2">البرامج والأنظمة التي تتقنها:</label>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                                <label class="flex items-center gap-2 p-3 rounded-xl border border-slate-200 bg-white cursor-pointer"><input type="checkbox" name="software" value="الأمين" class="w-4 h-4 text-osoul-primary rounded"> الأمين</label>
+                                <label class="flex items-center gap-2 p-3 rounded-xl border border-slate-200 bg-white cursor-pointer"><input type="checkbox" name="software" value="sql server" class="w-4 h-4 text-osoul-primary rounded"> لغة ادارة قواعد البيانات (SQL)</label>
+                                <label class="flex items-center gap-2 p-3 rounded-xl border border-slate-200 bg-white cursor-pointer"><input type="checkbox" name="software" value="Microsoft Excel" class="w-4 h-4 text-osoul-primary rounded"> Excel متقدم</label>
+                                <label class="flex items-center gap-2 p-3 rounded-xl border border-slate-200 bg-white cursor-pointer"><input type="checkbox" name="software" value="Microsoft office" class="w-4 h-4 text-osoul-primary rounded"> قيادة الحاسب الالي (ICDL)</label>
+                                <label class="flex items-center gap-2 p-3 rounded-xl border border-slate-200 bg-white cursor-pointer"><input type="checkbox" name="software" value="أنظمة ERP" class="w-4 h-4 text-osoul-primary rounded"> أنظمة ERP</label>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold mb-1.5">نبذة عن الخبرات</label>
+                            <textarea id="appBio" rows="3" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 outline-none bg-white" placeholder="اذكر باختصار خبراتك السابقة..."></textarea>
+                        </div>
+                    </div>
+
+                    <hr class="border-slate-200">
+
+                    <div>
+                        <h3 class="text-lg font-bold text-osoul-primary mb-4 flex items-center gap-2">
+                            <span class="w-7 h-7 rounded-full bg-osoul-primary text-white text-sm flex items-center justify-center">4</span> إرفاق السيرة الذاتية (CV)
+                        </h3>
+                        <div class="border-2 border-dashed border-slate-300 rounded-2xl p-6 text-center bg-white hover:border-osoul-primary transition relative">
+                            <input type="file" id="cvFile" accept=".pdf,.doc,.docx,.jpg,.png" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" onchange="updateFileName(this)">
+                            <div class="text-slate-500">
+                                <i class="fa-solid fa-cloud-arrow-up text-4xl text-osoul-primary mb-2"></i>
+                                <p class="font-bold text-slate-700" id="fileLabel">اضغط هنا لاختيار ملف السيرة الذاتية أو اسحبه إلى هنا</p>
+                                <p class="text-xs text-slate-400 mt-1">PDF, Word, أو صورة (الحد الأقصى 4MB)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <button type="submit" id="submitBtn" class="w-full bg-osoul-primary hover:bg-blue-900 text-white font-extrabold text-lg py-4 rounded-xl shadow-lg transition flex items-center justify-center gap-3">
+                            <span>إرسال طلب التوظيف</span> <i class="fa-solid fa-check-circle"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-osoul-dark text-slate-300 py-12 border-t border-slate-800">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 pb-8 border-b border-slate-800">
+                <div class="flex items-center gap-4">
+                    <img src="logo.jpg" alt="شعار شركة أصول" class="h-16 w-auto object-contain bg-white p-1.5 rounded-xl shadow" onerror="this.onerror=null; this.src='logo.png';">
+                    <div>
+                        <span class="text-white font-extrabold text-xl block">شركة أصول</span>
+                        <span class="text-xs text-emerald-400 font-bold tracking-wider block mb-1">OSOOL BUSINESS SOLUTIONS</span>
+                        <p class="text-xs text-slate-400">للمحاسبة وإدارة المستودعات والأنظمة البرمجية المتكاملة.</p>
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center">
+                    <h4 class="text-white font-bold text-sm mb-2"><i class="fa-solid fa-location-dot text-emerald-400 ml-1"></i> العنوان (Homs - Syria)</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        حمص - سوريا: مقابل الساعة الجديدة، بناء الاتاسي، الطابق الرابع، مكتب 414.<br>
+                        <span class="text-slate-500" dir="ltr">clock tower - AL-Atassi Building - 4th floor</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- الأرقام بجانب بعضها -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="bg-slate-800/50 p-4 rounded-2xl border border-slate-700/60">
+                    <h4 class="text-white font-bold text-sm mb-3 flex items-center gap-2"><i class="fa-solid fa-cart-shopping text-emerald-400"></i> المبيعات</h4>
+                    <div class="flex flex-wrap gap-2 text-xs">
+                        <a href="https://wa.me/963969555321" target="_blank" class="bg-slate-900 hover:bg-emerald-600 text-emerald-400 hover:text-white px-3 py-1.5 rounded-lg border border-slate-700 font-bold transition flex items-center gap-1.5" dir="ltr"><i class="fa-brands fa-whatsapp"></i> 0969 555 321</a>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-4 rounded-2xl border border-slate-700/60">
+                    <h4 class="text-white font-bold text-sm mb-3 flex items-center gap-2"><i class="fa-solid fa-headset text-emerald-400"></i> الدعم فني</h4>
+                    <div class="flex flex-wrap gap-2 text-xs">
+                        <a href="https://wa.me/963969555316" target="_blank" class="bg-slate-900 hover:bg-emerald-600 text-emerald-400 hover:text-white px-3 py-1.5 rounded-lg border border-slate-700 font-bold transition flex items-center gap-1.5" dir="ltr"><i class="fa-brands fa-whatsapp"></i> 0969 555 316</a>
+                        <a href="https://wa.me/963969555317" target="_blank" class="bg-slate-900 hover:bg-emerald-600 text-emerald-400 hover:text-white px-3 py-1.5 rounded-lg border border-slate-700 font-bold transition flex items-center gap-1.5" dir="ltr"><i class="fa-brands fa-whatsapp"></i> 0969 555 317</a>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-4 rounded-2xl border border-slate-700/60">
+                    <h4 class="text-white font-bold text-sm mb-3 flex items-center gap-2"><i class="fa-solid fa-calculator text-emerald-400"></i> القسم محاسبة والتدريب</h4>
+                    <div class="flex flex-wrap gap-2 text-xs">
+                        <a href="https://wa.me/963969555314" target="_blank" class="bg-slate-900 hover:bg-emerald-600 text-emerald-400 hover:text-white px-3 py-1.5 rounded-lg border border-slate-700 font-bold transition flex items-center gap-1.5" dir="ltr"><i class="fa-brands fa-whatsapp"></i> 0969 555 314</a>
+                        <a href="https://wa.me/963969555313" target="_blank" class="bg-slate-900 hover:bg-emerald-600 text-emerald-400 hover:text-white px-3 py-1.5 rounded-lg border border-slate-700 font-bold transition flex items-center gap-1.5" dir="ltr"><i class="fa-brands fa-whatsapp"></i> 0969 555 313</a>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-4 rounded-2xl border border-slate-700/60">
+                    <h4 class="text-white font-bold text-sm mb-3 flex items-center gap-2"><i class="fa-solid fa-user-tie text-emerald-400"></i> القسم اداري</h4>
+                    <div class="flex flex-wrap gap-2 text-xs">
+                        <a href="https://wa.me/963969555322" target="_blank" class="bg-slate-900 hover:bg-emerald-600 text-emerald-400 hover:text-white px-3 py-1.5 rounded-lg border border-slate-700 font-bold transition flex items-center gap-1.5" dir="ltr"><i class="fa-brands fa-whatsapp"></i> 0969 555 322</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800 pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-4">
+                <p>© جميع الحقوق محفوظة لشركة أصول للمحاسبة والمستودعات 2026.</p>
+                <a href="admin.html" class="text-slate-400 hover:text-emerald-400 transition font-bold"><i class="fa-solid fa-lock ml-1"></i> دخول لوحة الإدارة</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- نافذة النجاح -->
+    <div id="successModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-8 text-center shadow-2xl">
+            <div class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-4xl mx-auto mb-5"><i class="fa-solid fa-check"></i></div>
+            <h3 class="text-2xl font-extrabold text-slate-800 mb-2">تم استلام طلبك بنجاح!</h3>
+            <p class="text-slate-600 text-sm mb-6">تم إرسال بياناتك وملف السيرة الذاتية إلى قسم الموارد البشرية.</p>
+            <button onclick="closeModal()" class="w-full bg-osoul-accent hover:bg-emerald-700 text-white font-bold py-3 rounded-xl">حسناً</button>
+        </div>
+    </div>
+
+    <script>
+        // رابط قاعدة البيانات السحابية Firebase (متزامن مع admin.html)
+        const FIREBASE_URL = "https://osoul-42514-default-rtdb.firebaseio.com";
+
+        const subSpecialtiesMap = {
+            "المحاسبة والإدارة المالية": ["مدخل بيانات", "محاسب", "مدير حسابات", "مدير مالي"],
+            "الدعم التقني وتكنولوجيا المعلومات": ["شبكات", "إدارة قواعد بيانات", "نظم التشغيل", "ذكاء اصطناعي"],
+            "إدارة المستودعات والمخزون": ["أمين مستودع", "مشرف حركة مخزون", "لجنة جرد ومطابقة", "مدخل فواتير مستودعية"],
+            "الإدارة والمبيعات والموارد البشرية": ["موارد بشرية (HR)", "سكرتارية تنفيذية", "تسويق ومبيعات الأنظمة", "علاقات عامة"]
+        };
+
+        function updateSubSpecialties(selectedSub = null) {
+            const deptSelect = document.getElementById('departmentSelect');
+            const subSelect = document.getElementById('subSpecialtySelect');
+            const selectedDept = deptSelect.value;
+            subSelect.innerHTML = '';
+            if (selectedDept && subSpecialtiesMap[selectedDept]) {
+                subSpecialtiesMap[selectedDept].forEach(sub => {
+                    const opt = document.createElement('option');
+                    opt.value = sub;
+                    opt.textContent = sub;
+                    if (selectedSub && selectedSub === sub) opt.selected = true;
+                    subSelect.appendChild(opt);
+                });
+            } else {
+                subSelect.innerHTML = '<option value="" disabled selected>اختر القسم الرئيسي أولاً...</option>';
+            }
+        }
+
+        function selectDepartmentFromCard(deptName, cardSelectId) {
+            const deptSelect = document.getElementById('departmentSelect');
+            const chosenSub = document.getElementById(cardSelectId).value;
+            deptSelect.value = deptName;
+            updateSubSpecialties(chosenSub);
+            document.getElementById('apply-form').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function updateFileName(input) {
+            const label = document.getElementById('fileLabel');
+            if (input.files && input.files[0]) {
+                label.innerHTML = `<span class="text-emerald-600"><i class="fa-solid fa-file-circle-check ml-1"></i> تم إرفاق: ${input.files[0].name}</span>`;
+            } else {
+                label.innerText = 'اضغط هنا لاختيار ملف السيرة الذاتية أو اسحبه إلى هنا';
+            }
+        }
+
+        document.getElementById('jobApplicationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formElement = this;
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span>جاري إرسال الطلب...</span> <i class="fa-solid fa-spinner fa-spin"></i>';
+
+            const software = Array.from(document.querySelectorAll('input[name="software"]:checked')).map(cb => cb.value);
+            const cvInput = document.getElementById('cvFile');
+            const mainDept = document.getElementById('departmentSelect').value;
+            const subSpec = document.getElementById('subSpecialtySelect').value;
+
+            const saveApplicantData = async (cvDataUrl, cvName) => {
+                const newApp = {
+                    id: Date.now(),
+                    name: document.getElementById('appName').value,
+                    phone: document.getElementById('appPhone').value,
+                    email: document.getElementById('appEmail').value || "غير محدد",
+                    city: document.getElementById('appCity').value,
+                    birthYear: document.getElementById('appBirthYear').value,
+                    degree: document.getElementById('appDegree').value,
+                    major: document.getElementById('appMajor').value,
+                    university: document.getElementById('appUniversity').value || "غير محدد",
+                    department: `${mainDept} (${subSpec})`,
+                    experience: document.getElementById('appExperience').value,
+                    workType: document.getElementById('appWorkType').value,
+                    software: software.length ? software : ["لم يتم التحديد"],
+                    bio: document.getElementById('appBio').value || "لا توجد نبذة.",
+                    cvFile: cvName,
+                    cvFileName: cvName,
+                    cvData: cvDataUrl,
+                    date: new Date().toISOString().slice(0, 10),
+                    status: "pending"
+                };
+
+                // 1. الإرسال الفوري إلى قاعدة البيانات السحابية Firebase
+                if (FIREBASE_URL && FIREBASE_URL.startsWith("http")) {
+                    const cleanUrl = FIREBASE_URL.replace(/\/$/, "");
+                    try {
+                        await fetch(`${cleanUrl}/applicants/${newApp.id}.json`, {
+                            method: 'PUT',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(newApp)
+                        });
+                    } catch (err) {
+                        console.error("خطأ في الإرسال السحابي:", err);
+                    }
+                }
+
+                // 2. الحفظ المحلي الاحتياطي
+                try {
+                    const list = JSON.parse(localStorage.getItem('osoul_applicants')) || [];
+                    list.unshift(newApp);
+                    localStorage.setItem('osoul_applicants', JSON.stringify(list));
+                } catch (err) {}
+
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<span>إرسال طلب التوظيف</span> <i class="fa-solid fa-check-circle"></i>';
+                document.getElementById('successModal').classList.remove('hidden');
+                document.getElementById('successModal').classList.add('flex');
+                formElement.reset();
+                document.getElementById('subSpecialtySelect').innerHTML = '<option value="" disabled selected>اختر القسم الرئيسي أولاً...</option>';
+                document.getElementById('fileLabel').innerText = 'اضغط هنا لاختيار ملف السيرة الذاتية أو اسحبه إلى هنا';
+            };
+
+            if (cvInput.files && cvInput.files[0]) {
+                const file = cvInput.files[0];
+                const reader = new FileReader();
+                reader.onload = function(uploadEvent) {
+                    saveApplicantData(uploadEvent.target.result, file.name);
+                };
+                reader.readAsDataURL(file);
+            } else {
+                saveApplicantData(null, "بدون مرفق");
+            }
+        });
+
+        function closeModal() {
+            document.getElementById('successModal').classList.add('hidden');
+            document.getElementById('successModal').classList.remove('flex');
+        }
+    </script>
+</body>
+</html>
