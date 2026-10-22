@@ -481,8 +481,8 @@
                 };
 
                 // 1. الإرسال الفوري إلى قاعدة البيانات السحابية Firebase
-                if (FIREBASE_URL && FIREBASE_URL.startsWith("http")) {
-                    const cleanUrl = FIREBASE_URL.replace(/\/$/, "");
+                if ("https://osool-17e83-default-rtdb.firebaseio.com" && "https://osool-17e83-default-rtdb.firebaseio.com".startsWith("http")) {
+                    const cleanUrl = "https://osool-17e83-default-rtdb.firebaseio.com".replace(/\/$/, "");
                     try {
                         await fetch(`${cleanUrl}/applicants/${newApp.id}.json`, {
                             method: 'PUT',
